@@ -1,0 +1,21 @@
+version: '3'
+services:
+ eurekaServer:
+  image: "nocoolming/eureka-server"
+  hostname: eurekaServer
+  ports:
+   - "8763:8763"
+ serviceUser:
+  image: "nocoolming/service-user"
+  hostname: serviceUser
+  links:
+   - eurekaServer
+  ports:
+   - "7111:7111"
+ api:
+  image: "nocoolming/api"
+  hostname: api
+  ports:
+   - "9999:9999"
+  links:
+   - eurekaServer
