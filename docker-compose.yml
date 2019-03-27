@@ -1,21 +1,24 @@
 version: '3'
 services:
- eurekaServer:
-  image: "nocoolming/eureka-server"
-  hostname: eurekaServer
-  ports:
-   - "8763:8763"
- serviceUser:
-  image: "nocoolming/service-user"
-  hostname: serviceUser
-  links:
-   - eurekaServer
-  ports:
-   - "7111:7111"
- api:
-  image: "nocoolming/api"
-  hostname: api
-  ports:
-   - "9999:9999"
-  links:
-   - eurekaServer
+  eurekaServer:
+    image: "nocoolming/eureka-server"
+    hostname: eurekaServer
+    ports:
+      - "8763:8763"
+  serviceUser:
+    image: "nocoolming/service-user:0.0.1"
+    hostname: serviceUser
+    links:
+      - eurekaServer
+  feignUser:
+    image: "nocoolming/feign-user:0.0.1"
+    hostname: api
+    links:
+      - eurekaServer
+  gateway:
+    image: "nocoolming/gateway:1"
+    hostname: gateway
+    ports:
+      - "9999:9999"
+    links:
+      - eurekaServer
