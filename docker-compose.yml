@@ -19,6 +19,6 @@ services:
     image: "nocoolming/gateway:1"
     hostname: gateway
     ports:
-      - "9999:9999"
+      - "6060:6060"
     links:
       - eurekaServer
