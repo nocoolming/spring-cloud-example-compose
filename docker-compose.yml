@@ -11,12 +11,14 @@ services:
     links:
       - eurekaServer
   feignUser:
-    image: "nocoolming/feign-user:0.0.1"
-    hostname: api
+    image: "nocoolming/feign-user:0.0.3"
+    hostname: feignUser
+    ports:
+      - "8989:8989"
     links:
       - eurekaServer
   gateway:
-    image: "nocoolming/gateway:1"
+    image: "nocoolming/gateway:0.0.3"
     hostname: gateway
     ports:
       - "6060:6060"
