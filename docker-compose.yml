@@ -13,8 +13,8 @@ services:
   feignUser:
     image: "nocoolming/feign-user:0.0.3"
     hostname: feignUser
-    ports:
-      - "8989:8989"
+#    ports:
+#      - "8989:8989"
     links:
       - eurekaServer
   gateway:
