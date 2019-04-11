@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.18.0 (06a2e56)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: serviceuser
+  name: serviceuser
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: serviceuser
+    spec:
+      containers:
+      - image: nocoolming/service-user:0.0.1
+        name: serviceuser
+        resources: {}
+      hostname: serviceUser
+      restartPolicy: Always
+status: {}
